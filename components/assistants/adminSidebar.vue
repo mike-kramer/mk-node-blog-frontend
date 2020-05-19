@@ -7,6 +7,9 @@
             <li>
                 <nuxt-link to="/admin/posts">Посты</nuxt-link>
             </li>
+            <li>
+                <nuxt-link to="/admin/categories">Категории</nuxt-link>
+            </li>
         </template>
     </ul>
 </template>

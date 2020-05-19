@@ -17,6 +17,18 @@ export default  {
                 return false;
             }
             return buildPath(this.categories, category);
-        }
+        },
+        fieldErrors(entity, field, titles, errors) {
+            if (!this.$v[entity][field].$dirty) {
+                return [];
+            }
+            let errorMessages = [];
+            for (let ekey in errors) {
+                if (!this.$v[entity][field][ekey]) {
+                    errorMessages.push(errors[ekey]);
+                }
+            }
+            return errorMessages;
+        },
     }
 }
