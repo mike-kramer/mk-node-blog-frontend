@@ -32,10 +32,10 @@
 </template>
 
 <script>
-    import helpers from "../../mixins/helpers";
-    import datetime from "../../mixins/datetime";
-    import CategoryPath from "../../components/assistants/categoryPath";
-    import CommentForm from "../../components/assistants/commentForm";
+    import helpers from "../../../mixins/helpers";
+    import datetime from "../../../mixins/datetime";
+    import CategoryPath from "../../../components/assistants/categoryPath";
+    import CommentForm from "../../../components/assistants/commentForm";
 
     export default {
         components: {CommentForm, CategoryPath},
@@ -58,15 +58,4 @@
 <style scoped>
 
 </style>
-<router>
-    {
-        namedViews: {
-            views: {
-                sidebar: '~/components/assistants/defaultSidebar'
-            },
-            chunkNames: {
-                sidebar: '~/components/assistants/defaultSidebar'
-            }
-        }
-    }
-</router>
+

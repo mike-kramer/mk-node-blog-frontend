@@ -26,7 +26,17 @@
                     @input="$v.commentText.$touch()"
                     @blur="$v.commentText.$touch()"
                 ></v-textarea>
-                <v-btn color="success" @click="submit">Отправить</v-btn>
+                <vue-recaptcha
+                    ref="recaptcha"
+                    @verify="onVerify"
+                    @expired="onExpired"
+                    :sitekey="$store.state.recaptchaKey"
+                    :loadRecaptchaScript="true"
+                ></vue-recaptcha>
+                <div class="red" style="margin-top: 10px;" v-if="notRobotError">
+                    Подтвердите, что вы не робот
+                </div>
+                <v-btn color="success" style="margin-top: 10px;" @click="submit">Отправить</v-btn>
             </form>
         </v-card-text>
     </v-card>
@@ -35,10 +45,12 @@
 <script>
     import {validationMixin} from 'vuelidate'
     import {required, maxLength, email} from 'vuelidate/lib/validators'
+    import VueRecaptcha from 'vue-recaptcha';
 
     export default {
         props: ["postId"],
         mixins: [validationMixin],
+        components: {VueRecaptcha},
         validations()  {
             let validations = {
                 authorName: {required, maxLength: maxLength(255)},
@@ -51,7 +63,10 @@
             return {
                 authorName: "",
                 authorEmail: "",
-                commentText: ""
+                commentText: "",
+                notRobot: false,
+                recaptchaAnswer: false,
+                notRobotError: false,
             }
         },
         computed: {
@@ -80,17 +95,32 @@
                     this.$v.$touch();
                     return;
                 }
+                if (!this.notRobot) {
+                    this.notRobotError = true;
+                    return;
+                }
                 this.$axios.post(`posts/${this.postId}/comment`, {
                     authorName: this.authorName,
                     authorEmail: this.authorEmail,
-                    commentText: this.commentText
+                    commentText: this.commentText,
+                    recaptchaAnswer: this.recaptchaAnswer
                 }).then(
                     () => {
                         this.authorEmail = this.authorName = this.commentText = "";
                         this.$v.$reset();
+                        this.notRobot = false;
+                        this.$refs.recaptcha.reset();
                         this.$emit("commentPosted");
                     }
                 )
+            },
+            onVerify(resp) {
+                console.log(resp);
+                this.notRobot = true;
+                this.recaptchaAnswer = resp;
+            },
+            onExpired() {
+                this.notRobot = false;
             }
         }
     }

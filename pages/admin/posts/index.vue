@@ -32,7 +32,7 @@
                         </tbody>
                     </template>
                 </v-simple-table>
-                <div class="text-center" v-if="postsCount > 1">
+                <div class="text-center" v-if="pageCount > 1">
                     <v-pagination
                         v-model="page"
                         :length="pageCount"
