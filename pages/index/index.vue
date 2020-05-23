@@ -31,7 +31,7 @@
             const page = query.page && !isNaN(parseInt(query.page))  ? parseInt(query.page): 1;
             const [posts, postsCount] = await $axios.$get(`posts?page=${page}`);
             return {
-                posts,
+                posts: posts,
                 postsCount,
                 pageCount: Math.ceil(postsCount / 20),
                 page,
