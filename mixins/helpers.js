@@ -30,5 +30,12 @@ export default  {
             }
             return errorMessages;
         },
+        truncateText(postText, length) {
+            let result = postText.replace(/(<([^>]+)>)/ig,"").substr(0, length);
+            if (result.length < postText.length) {
+                result += "…";
+            }
+            return result;
+        }
     }
 }

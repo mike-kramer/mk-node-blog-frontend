@@ -13,7 +13,7 @@
                 <category-path :category-path="categoryPath(post.category)"></category-path>
             </v-card-subtitle>
             <v-card-text>
-                <div v-html="post.text"></div>
+                <div class="post-text" v-highlight v-html="post.text"></div>
 
                 <v-card style="margin-top: 20px;">
                     <v-card-title>Комментарии</v-card-title>

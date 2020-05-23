@@ -27,12 +27,15 @@
                 <v-treeview
                     dense
                     :items="categories"
+                    :open.sync="openedCategories"
                 >
                     <template v-slot:label="{ item, open, leaf }">
                         {{item.name}}
                         <v-icon @click="createChild(item)">mdi-plus-circle-outline</v-icon>
                         <template v-if="item.name !== 'root'">
                             <v-icon @click="editCategory(item)">mdi-pencil-box</v-icon>
+                            <v-icon @click="move(item, 'up')">mdi-arrow-up-bold-circle-outline</v-icon>
+                            <v-icon @click="move(item, 'down')">mdi-arrow-down-bold-circle-outline</v-icon>
                         </template>
                         <template v-if="item.children.length === 0">
                             <v-icon>mdi-delete</v-icon>
@@ -69,7 +72,8 @@
                     id: null,
                     parentId: null,
                     name: ""
-                }
+                },
+                openedCategories: []
             }
         },
         validations: {
@@ -120,6 +124,13 @@
                         this.categories = categories;
                         this.editCategoryModal = false;
                     });
+            },
+            move(item, direction) {
+                return this.$axios.$post(`category-admin/move/${item.id}/${direction}`).then(
+                    async () => {
+                        this.categories = await this.$axios.$get("category-admin/full-tree");
+                    }
+                )
             }
 
         }

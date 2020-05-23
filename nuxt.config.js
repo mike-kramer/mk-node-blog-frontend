@@ -27,13 +27,17 @@ export default {
     /*
     ** Global CSS
     */
-    css: [],
+    css: [
+        "./node_modules/vue-code-highlight/themes/prism.css",
+        "./assets/global.scss"
+    ],
     /*
     ** Plugins to load before mounting the App
     */
     plugins: [
         '~/plugins/axios.js',
-        '~/plugins/serviceInstaller.js'
+        '~/plugins/serviceInstaller.js',
+        "~/plugins/vuePlugins.js"
     ],
     /*
     ** Nuxt.js dev-modules
