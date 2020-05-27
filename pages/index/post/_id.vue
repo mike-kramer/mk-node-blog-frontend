@@ -46,6 +46,11 @@
             post.comments = post.comments.reverse();
             return {post, categories};
         },
+        head () {
+            return {
+                title: this.post.title,
+            };
+        },
         methods: {
             async reloadPostComments() {
                 let post = await this.$axios.$get(`posts/${this.$route.params.id}`);

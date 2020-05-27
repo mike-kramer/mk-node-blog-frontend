@@ -31,6 +31,11 @@ export default  {
             return errorMessages;
         },
         truncateText(postText, length) {
+            let morePosition = postText.indexOf("<!--more-->");
+            if (morePosition !== -1) {
+                postText = postText.substr(0, morePosition);
+                return postText.replace(/(<([^>]+)>)/ig,"");
+            }
             let result = postText.replace(/(<([^>]+)>)/ig,"").substr(0, length);
             if (result.length < postText.length) {
                 result += "…";

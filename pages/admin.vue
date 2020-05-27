@@ -5,6 +5,11 @@
 <script>
     export default {
         middleware: 'auth',
+        head() {
+            return {
+                titleTemplate:  "%s - Админка - Блог Михаила Крамера"
+            }
+        }
     }
 </script>
 

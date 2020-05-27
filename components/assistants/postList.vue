@@ -6,7 +6,7 @@
                 {{reformatDate(post.createdAt, 'DD.MM.YYYY')}}
                 <category-path :category-path="categoryPath(post.category)"></category-path>
             </v-card-subtitle>
-            <v-card-text>{{post.excerpt ? post.excerpt: truncateText(post.text, 100)}}</v-card-text>
+            <v-card-text>{{post.excerpt ? post.excerpt: truncateText(post.text, 200)}}</v-card-text>
             <v-card-actions>
                 <v-btn :to="`/post/${post.id}`" nuxt>Читать</v-btn>
             </v-card-actions>

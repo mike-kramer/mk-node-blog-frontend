@@ -39,6 +39,11 @@
     export default {
         mixins: [validationMixin],
         auth: "guest",
+        head() {
+            return {
+                title: "Логин"
+            };
+        },
         data() {
             return {
                 userData: {

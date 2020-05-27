@@ -6,7 +6,12 @@
 
 <script>
     export default {
-        name: "index"
+        name: "index",
+        head() {
+            return {
+                title: "Главная"
+            }
+        }
     }
 </script>
 

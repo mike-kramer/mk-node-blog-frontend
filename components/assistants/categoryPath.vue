@@ -1,7 +1,7 @@
 <template>
     <ul class="category-path">
         <li v-for="cat in categoryPath">
-            <a href="#" v-if="!admin">{{cat.name}}</a>
+            <nuxt-link :to="`/categories/${cat.id}`" v-if="!admin">{{cat.name}}</nuxt-link>
             <span v-else>{{cat.name}}</span>
         </li>
     </ul>

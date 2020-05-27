@@ -67,6 +67,11 @@
         async asyncData({$axios, query, app}) {
             return await loadPosts(query, $axios, app);
         },
+        head() {
+            return {
+                title: "Посты"
+            };
+        },
         methods: {
             goToPage() {
                 this.$router.push(`/admin/posts?page=${this.page}`);

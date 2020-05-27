@@ -58,6 +58,11 @@
             let categories = await $axios.$get("category-admin/full-tree");
             return {categories};
         },
+        head() {
+            return {
+                title: "Категории"
+            };
+        },
         watch: {
             editCategoryModal() {
                 if (!this.editCategoryModal) {

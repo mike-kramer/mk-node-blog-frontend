@@ -24,9 +24,11 @@
 
 <script>
     import PostList from "../../../components/assistants/postList";
+    import helpers  from "../../../mixins/helpers";
     export default {
         components: {PostList},
         watchQuery: true,
+        mixins: [helpers],
         async asyncData({$axios, params, app, query}) {
             const page = query.page && !isNaN(parseInt(query.page))  ? parseInt(query.page): 1;
             const [posts, postsCount] = await $axios.$get(`posts?category=${params.id}&page=${page}`);
@@ -37,6 +39,10 @@
                 categories: await app.$categoryService.getCategories(),
                 category: await app.$categoryService.getCategory(params.id)
             }
+        },
+        head() {
+            let catPath = this.categoryPath(this.category).map(c => c.name)
+            return {title: catPath.join(" - ")};
         },
         methods: {
             goToPage() {

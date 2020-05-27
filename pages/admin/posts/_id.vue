@@ -61,6 +61,11 @@
             }
             return {post, categories};
         },
+        head() {
+            return {
+                title: "Редактирование поста"
+            };
+        },
         computed: {
             categoryList() {
                 let list = [];
