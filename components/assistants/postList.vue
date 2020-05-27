@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-card width="100%" style="margin-bottom: 20px;" v-for="post in posts" v-bind:key="post.id" color="yellow">
-            <v-card-title>{{post.title}}</v-card-title>
-            <v-card-subtitle>
+            <v-card-title style="background: lightgreen; padding-bottom: 30px;">{{post.title}}</v-card-title>
+            <v-card-subtitle style="margin-top: -25px;">
                 {{reformatDate(post.createdAt, 'DD.MM.YYYY')}}
                 <category-path :category-path="categoryPath(post.category)"></category-path>
             </v-card-subtitle>
