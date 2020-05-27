@@ -9,6 +9,7 @@
             <v-card-text>{{post.excerpt ? post.excerpt: truncateText(post.text, 200)}}</v-card-text>
             <v-card-actions>
                 <v-btn :to="`/post/${post.id}`" nuxt>Читать</v-btn>
+                <v-btn :to="`/admin/posts/${post.id}`" nuxt v-if="$auth.loggedIn">Редактировать</v-btn>
             </v-card-actions>
         </v-card>
     </div>

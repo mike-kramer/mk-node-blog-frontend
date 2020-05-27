@@ -106,7 +106,7 @@
                     this.$route.params.id === "new" ? "/posts-admin" : `/posts-admin/${this.post.id}`,
                     this.post
                 ).then(() => {
-                    this.$router.push("/admin/posts");
+                    this.$router.back();
                 })
             }
 

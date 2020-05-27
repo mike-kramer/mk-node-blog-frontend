@@ -27,6 +27,9 @@
                     </v-card-text>
                 </v-card>
             </v-card-text>
+            <v-card-actions v-if="$auth.loggedIn">
+                <v-btn :to="`/admin/posts/${post.id}`" nuxt>Редактировать</v-btn>
+            </v-card-actions>
         </v-card>
     </v-layout>
 </template>
