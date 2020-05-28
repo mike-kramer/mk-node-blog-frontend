@@ -25,8 +25,9 @@
                                 {{reformatDate(post.createdAt, "DD.MM.YYYY HH:mm")}}
                             </td>
                             <td>
-                                <v-btn color="primary" :to="`/admin/posts/${post.id}`" nuxt><v-icon>mdi-pencil</v-icon></v-btn>
-                                <v-btn color="error" @click="removePost(post)"><v-icon>mdi-delete</v-icon></v-btn>
+                                <v-btn color="primary" :to="`/admin/posts/${post.id}`" :icon="true" nuxt><v-icon>mdi-pencil</v-icon></v-btn>
+                                <v-btn color="secondary" :to="`/post/${post.id}`" :icon="true" nuxt><v-icon>mdi-eye</v-icon></v-btn>
+                                <v-btn color="error" @click="removePost(post)" :icon="true"><v-icon>mdi-delete</v-icon></v-btn>
                             </td>
                         </tr>
                         </tbody>
