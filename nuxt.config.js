@@ -9,7 +9,7 @@ export default {
     ** Headers of the page
     */
     head: {
-        titleTemplate: '%s - ' + 'Блог Михаила Крамера о программировании',
+        titleTemplate: '%s - ' + 'Блог Михаила Крамера о программировании на PHP и JS',
         title: '',
         meta: [
             {charset: 'utf-8'},

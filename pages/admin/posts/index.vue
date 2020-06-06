@@ -53,7 +53,7 @@
 
     async function loadPosts(query, $axios, app) {
         const page = query.page ? parseInt(query.page) : 1;
-        const [posts, postsCount] = await $axios.$get(`/posts-admin/list?page=${page}&perPage=${perPage}`);
+        const [posts, postsCount] = await $axios.$get(`/posts-admin/list?page=${page}&perPage=${perPage}&sortBy=createdAt&sortDirection=DESC`);
         const pageCount = Math.ceil(postsCount / perPage);
         const categories = await app.$categoryService.getCategories();
         return {

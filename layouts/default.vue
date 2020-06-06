@@ -37,7 +37,7 @@ export default {
       drawer: false,
       fixed: false,
       miniVariant: false,
-      title: 'Блог Михаила Крамера'
+      title: 'Блог Михаила Крамера. PHP и JS'
     }
   }
 }
