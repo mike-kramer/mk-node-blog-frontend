@@ -25,6 +25,7 @@
 <script>
     import PostList from "../../components/assistants/postList";
     export default {
+        name: "last-publications",
         components: {PostList},
         watchQuery: true,
         async asyncData({$axios, app, query}) {

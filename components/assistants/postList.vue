@@ -21,11 +21,20 @@
     import CategoryPath from "./categoryPath";
     import datetime from "../../mixins/datetime";
     import helpers from "../../mixins/helpers";
+    import * as moment from "moment";
 
     export default {
+        name: "post-list",
         props: ["posts", "categories"],
         components: {CategoryPath},
         mixins: [datetime, helpers],
+        serverCacheKey: props => {
+            if (props.posts.length === 0) {
+                return "pl-none";
+            }
+            let lastUpdateTime = Math.max(...props.posts.map(p => p.updatedAtTimeStamp));
+            return `pl-${lastUpdateTime}` + props.posts.map(p => p.id).join("::");
+        },
     }
 </script>
 
