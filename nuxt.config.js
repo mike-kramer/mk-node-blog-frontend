@@ -37,7 +37,8 @@ export default {
     plugins: [
         '~/plugins/axios.js',
         '~/plugins/serviceInstaller.js',
-        "~/plugins/vuePlugins.js"
+        "~/plugins/vuePlugins.js",
+        "~/plugins/ga.js"
     ],
     /*
     ** Nuxt.js dev-modules
