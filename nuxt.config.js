@@ -54,7 +54,7 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/auth',
-        ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 * 20 }],
+        ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     ],
     /*
     ** Axios module configuration
